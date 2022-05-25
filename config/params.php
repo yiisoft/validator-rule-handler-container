@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'yiisoft/validator-rules-container' => [
+    'yiisoft/validator-rule-handler-container' => [
         'handlers' => [],
         'validate' => true,
     ],
