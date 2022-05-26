@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Validator\Rules\Container\Tests\Support;
+namespace Yiisoft\Validator\Rule\Handler\Container\Tests\Support;
 
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\RuleHandlerInterface;

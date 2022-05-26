@@ -1,6 +1,6 @@
 <?php
 
-namespace Yiisoft\Validator\Rules\Container\Tests;
+namespace Yiisoft\Validator\Rule\Handler\Container\Tests;
 
 use Yiisoft\Definitions\Exception\InvalidConfigException;
 use Yiisoft\Test\Support\Container\SimpleContainer;

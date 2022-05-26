@@ -15,7 +15,7 @@
 [![static analysis](https://github.com/yiisoft/validator-rule-handler-container/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/validator-rule-handler-container/actions?query=workflow%3A%22static+analysis%22)
 [![type-coverage](https://shepherd.dev/github/yiisoft/validator-rule-handler-container/coverage.svg)](https://shepherd.dev/github/yiisoft/validator-rule-handler-container)
 
-The package is a factory for resolving [Yii Validator](https://github.com/yiisoft/validator) rule handlers. It
+The package is a container for resolving [Yii Validator](https://github.com/yiisoft/validator) rule handlers. It
 provides rule handler container based on [Yii Factory](https://github.com/yiisoft/factory) and uses
 [Yii Definitions](https://github.com/yiisoft/definitions) syntax.
 

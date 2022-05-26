@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yiisoft\Validator\Rules\Container;
+namespace Yiisoft\Validator\Rule\Handler\Container;
 
 use Psr\Container\ContainerInterface;
 use Yiisoft\Factory\Factory;

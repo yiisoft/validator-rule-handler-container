@@ -46,12 +46,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yiisoft\\Validator\\Rules\\Container\\": "src"
+            "Yiisoft\\Validator\\Rule\\Handler\\Container\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiisoft\\Validator\\Rules\\Container\\Tests\\": "tests"
+            "Yiisoft\\Validator\\Rule\\Handler\\Container\\Tests\\": "tests"
         }
     },
     "config": {
