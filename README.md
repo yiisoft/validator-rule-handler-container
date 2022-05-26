@@ -33,6 +33,82 @@ composer require yiisoft/validator-rule-handler-container --prefer-dist
 
 ## General usage
 
+### Direct interaction with rule handler container
+
+```php
+use Yiisoft\Validator\Result;
+use Yiisoft\Validator\Rule\RuleHandlerInterface;
+use Yiisoft\Validator\ValidationContext;
+use Yiisoft\Validator\Rule\Handler\Container\RuleHandlerContainer;
+
+/**
+ * Validates that the value is a Pi.
+ */
+final class PiHandler implements RuleHandlerInterface
+{
+    public function validate(mixed $value, object $rule, ?ValidationContext $context = null): Result
+    {
+        $result = new Result();
+
+        if (!(\abs($value - M_PI) < PHP_FLOAT_EPSILON)) {
+            $result->addError('Value must be Pi.', ['value' => $value]);
+        }
+
+        return $result;
+    }
+}
+
+$ruleHandlerContainer = new RuleHandlerContainer(new MyContainer());
+$ruleHandler = $ruleHandlerContainer->resolve(PiHandler::class);
+```
+
+- `MyContainer` is a container for resolving dependencies and  must be an instance of
+  `Psr\Container\ContainerInterface`. [Yii Dependency Injection](https://github.com/yiisoft/di) implementation also can
+  be used.
+- You can optionally set [definitions](https://github.com/yiisoft/definitions) and disable their validation if needed.
+
+Basically, the arguments are the same as in [Yii Factory](https://github.com/yiisoft/factory). Please refer to its docs
+for more details.
+
+Rule handlers are created only once, then cached and reused for repeated calls.
+
+```php
+$ruleHandler = $ruleHandlerContainer->create(PiHandler::class); // Returned from cache
+````
+
+### Using [Yii config](https://github.com/yiisoft/config)
+
+```php
+use Yiisoft\Di\Container;
+use Yiisoft\Di\ContainerConfig;
+use Yiisoft\Validator\RuleHandlerResolverInterface;
+use Yiisoft\Validator\Rule\Handler\Container\RuleHandlerContainer;
+
+// Need to be defined in params.php
+$params = [
+    'yiisoft/validator-rule-handler-container' => [
+        'handlers' => [PiHandler::class => PiHandler::class],
+        'validate' => true,
+    ],
+];
+
+// Need to be defined in common.php
+$config = [
+    RuleHandlerResolverInterface::class => [
+        'class' => RuleHandlerContainer::class,
+        '__construct()' => [
+            'definitions' => $params['yiisoft/validator-rule-handler-container']['handlers'],
+            'validate' => $params['yiisoft/validator-rule-handler-container']['validate'],
+        ],
+    ]
+];
+
+$containerConfig = ContainerConfig::create()->withDefinitions($config); 
+$container = new Container($containerConfig);
+$ruleHandlerResolver = $container->get(RuleHandlerResolverInterface::class);        
+$ruleHandler = $ruleHandlerResolver->resolve(PiHandler::class);
+```
+
 ## Testing
 
 ### Unit testing
