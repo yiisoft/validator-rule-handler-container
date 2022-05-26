@@ -10,7 +10,6 @@ use Yiisoft\Validator\ValidationContext;
 
 final class PiHandler implements RuleHandlerInterface
 {
-
     /**
      * @inheritDoc
      */
