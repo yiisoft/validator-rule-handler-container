@@ -6,6 +6,8 @@
     <br>
 </p>
 
+> ⚠️ This package is deprecated. Its contents were moved to the [validator package itself](https://github.com/yiisoft/validator).
+
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/validator-rule-handler-container/v/stable.png)](https://packagist.org/packages/yiisoft/validator-rule-handler-container)
 [![Total Downloads](https://poser.pugx.org/yiisoft/validator-rule-handler-container/downloads.png)](https://packagist.org/packages/yiisoft/validator-rule-handler-container)
 [![Build status](https://github.com/yiisoft/validator-rule-handler-container/workflows/build/badge.svg)](https://github.com/yiisoft/validator-rule-handler-container/actions?query=workflow%3Abuild)
